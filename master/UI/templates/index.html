@@ -1,0 +1,16 @@
+{% with title="BoBo" %}
+{% include "header.html" %}
+{% endwith %}
+
+<div class="container">
+	<section id="main_content">
+
+    <p>Welcome to BoBo BotNET.</p>
+    <ul>
+    <li><a href="{{ url_for('UI.agent_list') }}">Bot List</a></li>
+    </ul>
+
+  </section>
+</div>
+
+{% include "footer.html" %}

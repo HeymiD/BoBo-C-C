@@ -1,0 +1,40 @@
+{% with custom_header=True %}
+{% include "header.html" %}
+{% endwith %}
+
+<header>
+<div class="container">
+<div style="white-space: pre;color:  #ffffff;font-weight: bold">
+               *********               B B B            B B B
+             *************             B    B           B    B
+            *****     *****            B     B  O O O   B     B  O O O
+           ***           ***           B B B   O     O  B B B   O     O
+          ***             ***          B    B   O O O   B    B   O O O
+          **    0     0    **          B     B          B     B
+          **               **          B B B            B B B
+          ***             ***             //////////
+          ****           ****        ///////////////
+          *****         *****    ///////////////////
+          ******       ******/////////         |  |
+        *********     ****//////               |  |
+     *************   **/////*****              |  |
+    *************** **///***********          *|  |*
+   ************************************    ****| <=>*
+  *********************************************|<===>*
+  *********************************************| <==>*
+  ***************************** ***************| <=>*
+  ******************************* *************|  |*
+  ********************************** **********|  |*
+</div>
+</div>
+</header>
+
+<div class="container">
+  <section id="main_content">
+    <form method="POST">
+    <h2>PASSWORD: </h2><input type="password" name="password" style="width: 50%"> <input type="submit" value="OK">
+    </form>
+  </section>
+</div>
+
+{% include "footer.html" %}
