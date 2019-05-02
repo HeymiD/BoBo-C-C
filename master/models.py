@@ -22,7 +22,7 @@ class Bot(db.Model):
 
     def push_command(self, cmdline):
         cmd = Command()
-        cmd.agent = self
+        cmd.bot = self
         cmd.cmdline = cmdline
         cmd.timestamp = datetime.now()
         db.session.add(cmd)

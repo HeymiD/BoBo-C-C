@@ -14,7 +14,7 @@
       <tr><th>Name</th><th>Last Online</th><th>User</th><th>Host</th><th>IP</th><th>Change name</th></tr>
       {% for agent in agents %}
       <tr>
-        <td><a href="{{ url_for('UI.agent_detail', agent_id=agent.id) }}" style="text-decoration: none">{{agent.display_name}}</a>  </td>
+        <td><a href="{{ url_for('UI.agent_detail', botid=agent.id) }}" style="text-decoration: none">{{agent.bot_name}}</a>  </td>
         <td>{% if agent.last_online %}{% if agent.is_online() %}ONLINE{%else%}{{agent.last_online.strftime('%Y/%m/%d %H:%M')}}{%endif%}{% endif %}</td>
         <td>{{agent.username}}</td>
         <td>{{agent.hostname}}</td>
