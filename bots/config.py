@@ -1,4 +1,4 @@
-SERVER = "http://10.0.2.5:8080"
+SERVER = "http://bobonet.herokuapp.com"
 INTERVAL = 2
 IDLE = 60
 MAX_FAILED = 10
