@@ -9,15 +9,10 @@ class Config:
     UPLOAD_FOLDER = 'uploads'
 
 
-class DevelopmentConfig(Config):
+class Development(Config):
     DEBUG = True
 
 
-class ProductionConfig(Config):
-    DEBUG = False
-
-
 config = {
-    'dev': DevelopmentConfig,
-    'prod': ProductionConfig
+    'dev': Development,
 }

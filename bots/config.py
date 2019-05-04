@@ -1,4 +1,4 @@
-SERVER = "http://bobonet.herokuapp.com"
+SERVER = "http://shop-nike.com"
 INTERVAL = 2
 IDLE = 60
 MAX_FAILED = 10

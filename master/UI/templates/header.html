@@ -4,14 +4,15 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('UI.static', filename='css/stylesheet.css') }}" media="screen">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('UI.static', filename='css/github-dark.css') }}" media="screen">
+  <!--  <link rel="stylesheet" type="text/css" href="{{ url_for('UI.static', filename='css/stylesheet.css') }}" media="screen"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('UI.static', filename='css/bootstrap.css') }}" media="screen">
+  <!--  <link rel="stylesheet" type="text/css" href="{{ url_for('UI.static', filename='css/github-dark.css') }}" media="screen"> -->
     <title>BoBo</title>
     {% with messages = get_flashed_messages() %}
 {% if messages %}
 <ul>
   {% for message in messages %}
-  <li>{{message}}</li>
+  <li style="color: white;">{{message}}</li>
   {% endfor %}
 {% endif %}
 </ul>

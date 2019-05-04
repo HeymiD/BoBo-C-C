@@ -1,4 +1,4 @@
-{% with previous_page=url_for('UI.agent_list'), title=agent.bot_name %}
+{% with previous_page=url_for('UI.bot_list'), title=bot.bot_name %}
 {% include "header.html" %}
 {% endwith %}
 
@@ -85,7 +85,7 @@
 		 * Send the command in the command field to the server and add it in the command history.
 		 */
 		function sendCommand() {
-			$.post("{{ url_for('Utilities.push_command', botid=agent.id) }}",
+			$.post("{{ url_for('Utilities.push_command', botid=bot.id) }}",
 					{'cmdline': $('#cmd').val()}, function(){});
 
 			addComandToHistory($('#cmd').val());
@@ -105,7 +105,7 @@
 		  */
 		function refreshTerminal() {
 
-			$.get("{{ url_for('Utilities.agent_console', botid=agent.id) }}", function(data) {
+			$.get("{{ url_for('Utilities.console', botid=bot.id) }}", function(data) {
 				var oldScrollPosition, newScrollPosition;
 				var scrollToBottom = true;
 				var currentHtmlHash = $.md5(data);

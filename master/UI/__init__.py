@@ -79,19 +79,19 @@ def login():
                         flash('Last login from ' + last_login_ip + ' on ' + last_login_time.strftime("%d/%m/%y %H:%M"))
                     return redirect(url_for('UI.index'))
                 else:
-                    flash('Wrong passphrase')
+                    flash('Wrong Password!')
     return render_template('login.html')
 
 
-@UI.route('/passchange', methods=['GET', 'POST'])
+@UI.route('/change_password', methods=['GET', 'POST'])
 @require_admin
 def change_password():
     if request.method == 'POST':
         if 'password' in request.form:
-            admin_user = User.query.filter_by(username='admin').first()
+            admin = User.query.filter_by(username='admin').first()
             password_hash, salt = hash_and_salt(request.form['password'])
-            admin_user.password = password_hash
-            admin_user.salt = salt
+            admin.password = password_hash
+            admin.salt = salt
             db.session.add(admin_user)
             db.session.commit()
             flash('Password reset successfully. Please log in.')
@@ -109,30 +109,18 @@ def logout():
 
 @UI.route('/bots')
 @require_admin
-def agent_list():
+def bot_list():
     bots = Bot.query.order_by(Bot.last_online.desc())
-    return render_template('agent_list.html', agents=bots)
+    return render_template('bot_list.html', bots=bots)
 
 
-@UI.route('/agents/<botid>')
+@UI.route('/Bots/<botid>')
 @require_admin
-def agent_detail(botid):
+def bot_info(botid):
     bot = Bot.query.get(botid)
     if not bot:
         abort(404)
-    return render_template('agent_detail.html', agent=bot)
-
-
-@UI.route('/agents/rename', methods=['POST'])
-def rename_agent():
-    if 'newname' in request.form and 'id' in request.form:
-        agent = Agent.query.get(request.form['id'])
-        if not agent:
-            abort(404)
-        agent.rename(request.form['newname'])
-    else:
-        abort(400)
-    return ''
+    return render_template('bot_page.html', bot=bot)
 
 
 @UI.route('/uploads/<path:path>')

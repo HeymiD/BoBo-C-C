@@ -29,7 +29,8 @@ class Bot(db.Model):
         db.session.commit()
 
     def is_online(self):
-        return (datetime.now() - self.last_online).seconds < 30
+        return (datetime.now() - self.last_online).seconds < 15
+
 
 
 class Command(db.Model):
