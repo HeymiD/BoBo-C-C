@@ -43,5 +43,5 @@ def initdb():
 
 if __name__ == '__main__':
     heroku_port = int(os.environ.get('PORT'))
-    app.run(host='0.0.0.0', port=heroku_part)
+    app.run(host='0.0.0.0', port=heroku_port)
     #manager.run()
