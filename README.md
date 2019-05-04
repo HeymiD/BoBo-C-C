@@ -18,7 +18,7 @@ Command and Control with Exfiltration
     *************** **///***********          *|  |*
  
 
-SMaster folder(Server):
+Master folder(Server):
 
 To try out locally, go to BoBo.py and comment out the line with heroku_port and 
 make the port equal the number you want and run it with this command:
