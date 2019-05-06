@@ -1,4 +1,4 @@
-SERVER = "http://shop-nike.com"
+SERVER = "http://www.shop-nike.com"
 INTERVAL = 2
 IDLE = 60
 MAX_FAILED = 10
