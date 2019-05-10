@@ -17,6 +17,7 @@ Command and Control with Exfiltration
      *************   **/////*****              |  |
     *************** **///***********          *|  |*
  
+ Disclaimer: This project is an educational project. If anyone uses it, it is illegal and it is  not in my responsibility.
 
 Master folder(Server):
 
